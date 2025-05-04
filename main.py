@@ -43,7 +43,7 @@ df_main, wb = load_excel_data(MAIN_EXCEL_PATH)
 df_main["Task ID"] = df_main["Task ID"].astype(str).str.strip()
 
 # Sidebar navigation
-st.sidebar.title("🛍️ Navigation")
+st.sidebar.title("💡 Navigation")
 page = st.sidebar.radio("Go to", ["Testing App", "Excel Sheet", "Analytics"])
 
 # Improved ID normalization function
@@ -128,7 +128,7 @@ if page == "Testing App":
             selected_row = selected_row.iloc[0]
             with st.expander("📋 Task Details", expanded=True):
                 st.text_input("📝 Task Heading", selected_row.get("Task Name", ""), disabled=True)
-                st.text_input("🛍️ Navigation", selected_row.get("Navigation", ""), disabled=True)
+                st.text_input("💡 Navigation", selected_row.get("Navigation", ""), disabled=True)
                 st.text_input("⚙️ Parameters", selected_row.get("Parameters", ""), disabled=True)
 
             # Test submission
