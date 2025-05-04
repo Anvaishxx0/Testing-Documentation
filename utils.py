@@ -3,6 +3,7 @@ import io
 import base64
 import requests
 from datetime import datetime
+from zoneinfo import ZoneInfo
 from PIL import Image
 import pandas as pd
 import streamlit as st
@@ -92,7 +93,7 @@ def save_screenshots_to_excel(excel_path, df_main, wb, task_id, tester_name, tes
         write_row(label, f"Task {task_id}", bold=True)
         write_row("Navigation", task_info["Navigation"], bold=True)
         write_row("Tester Name", tester_name, bold=True)
-        write_row("Timestamp", datetime.now().strftime("%Y-%m-%d %H:%M:%S"), bold=True)
+        write_row("Timestamp", datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S"), bold=True)
 
     for screenshot in screenshots:
         current_row = insert_image(ws, screenshot, current_row)
@@ -119,7 +120,7 @@ def save_screenshots_to_excel(excel_path, df_main, wb, task_id, tester_name, tes
         if normalize_id(cell_task_id) == normalized_task_id:
             main_ws.cell(row=row, column=5).value = tester_name
             main_ws.cell(row=row, column=6).value = test_result
-            main_ws.cell(row=row, column=7).value = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            main_ws.cell(row=row, column=7).value = datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S")
             result_cell = main_ws.cell(row=row, column=6)
             result_cell.fill = PatternFill(start_color=fill_color, end_color=fill_color, fill_type="solid")
             break
@@ -147,7 +148,7 @@ def save_screenshots_to_excel(excel_path, df_main, wb, task_id, tester_name, tes
             ("Pass Rate", pass_rate),
             ("Last Updated Task ID", task_id),
             ("Last Updated By", tester_name),
-            ("Last Updated On", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            ("Last Updated On", datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S"))
         ]
 
         for i, (label, value) in enumerate(summary_data, start=1):
