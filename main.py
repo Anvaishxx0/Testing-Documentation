@@ -32,7 +32,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # NEW: GitHub configuration
-GITHUB_REPO = "AIAppTesting/MyApp"
+GITHUB_REPO = "Anvaishxx0/Testing-Documentation"
 GITHUB_FILE = "main_excel.xlsx"
 
 # Load Excel data
